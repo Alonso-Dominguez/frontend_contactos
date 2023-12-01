@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispositivos</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script type="text/javascript" src="../static/js/update.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        hr {
+            border: 1px solid #333;
+            margin: 20px 0;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input:read-only {
+            background-color: aliceblue;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu">
+        <h1>Dispositivos</h1>
+    </div>
+
+    <hr>
+
+    <form id="insert-form" name="insert-form">
+        <center>
+            <h1>Led</h1>
+            <hr size="10" color="black">
+            <p>
+                <input hidden type="text" id="identificador" name="identificador" readonly>
+            </p>
+            <p>
+                <label for="nombre">Dispositivo:</label>
+                <input type="text" id="nombre" name="nombre" readonly>
+            </p>
+            <label for="estado">Estado:</label>
+            <input type="checkbox" name="status" id="status">
+            <p>
+                <button type="button" onclick="updateDispositivo()">Enviar</button>
+                <a href="/">Regresar</a>
+            </p>
+        </center>
+    </form>
+
+    <script>
+        function updateDispositivo() {
+            var identificador = document.getElementById("identificador").value;
+            var nombre = document.getElementById("nombre").value;
+
+            // Obtén el estado del checkbox
+            var estadoCheckbox = document.getElementById("status").checked;
+
+            // Convierte el estado del checkbox a un valor numérico (0 o 1)
+            var estado = estadoCheckbox ? 1 : 0;
+
+            var estado = estado.toString()
+            console.log(estado);
+            updateData(identificador, nombre, estado);
+        }
+    </script>
+</body>
+
+</html>
